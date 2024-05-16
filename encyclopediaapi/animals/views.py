@@ -6,8 +6,14 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework import generics, status
 
+
+
 class AnimalList(generics.ListCreateAPIView):
     
     queryset = models.Animals.objects.all()
     serializer_class = serializers.PartialAnimalSerializer
 
+
+class AnimalDetail(generics.RetrieveAPIView):
+    queryset = models.Animals.objects.all()
+    serializer_class = serializers.AnimalSerializer  # Use full serializer for detail view
